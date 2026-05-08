@@ -1,8 +1,88 @@
 # Harvard CS Path
 
-一个把 Harvard / CS50 公开计算机课程整理成长期自学路径的静态网站。它不是只展示“好看的课程卡片”，而是把课程链接、年份 / 学期、证书、费用边界和核验来源放在同一个工具里，方便持续维护和放心学习。
+把 Harvard / CS50 公开计算机课程整理成一套长期自学工具：从零基础入门，到 AI、Web、系统底层和算法方向，都可以按路径学习，并能继续跳转到 Harvard / CS50 / edX 等官方教学页面。
 
-<img src="docs/screenshots/home.png" alt="Harvard CS Path 首页" width="720">
+> 非 Harvard 官方项目。它的价值在于把常青藤、世界顶级学府公开出来的 CS 知识资源，整理成更适合普通人长期执行的学习路径。
+
+<img src="docs/screenshots/readme-home-overview.jpg" alt="Harvard CS Path 首页总览" width="820">
+
+## 这个项目解决什么问题
+
+网上不缺“哈佛 CS 课程清单”，真正难的是三件事：
+
+- 不知道先学哪门，后学哪门。
+- 不知道链接是不是官方、课程编号是不是还对。
+- 不知道证书、费用、年份和作业入口到底以哪里为准。
+
+这个网站把这些信息放到同一个地方：每门课都有课程事实、学习资源、证书 / 费用边界和核验来源。你可以把它当作 AI 时代的计算机自学入口，而不是一次性收藏夹。
+
+## 核心优势
+
+1. **围绕 Harvard / CS50 公开资源整理**  
+   课程入口优先指向 Harvard、CS50、Harvard Online、my.harvard、Harvard Math / SEAS 等官方页面，减少二手搬运链接的不确定性。
+
+2. **不是课程堆叠，而是学习路径**  
+   网站把课程按目标重排成 4 条路径：通用软件工程师、AI / 机器学习、Web 全栈、系统底层 / 基础设施。学习者先选目标，再按阶段推进。
+
+3. **适合 AI 时代重新补计算机基础**  
+   AI 可以帮你解释、复盘和加速反馈，但不能替你建立 CS 基础。这个项目强调 Python、数学、数据结构、算法、系统、网络和项目实践。
+
+4. **每门课保留核验来源**  
+   网站不只写“推荐课程”，还标明课程年份 / 学期、证书规则、费用边界和官方来源。后续课程页面变化时，可以回到核验记录继续维护。
+
+5. **可以直接跳到 Harvard 教学页面**  
+   进入课程详情后，点击“学习资源”里的 `official`、`certificate`、`edx` 等卡片，就能打开对应的 Harvard / CS50 / edX 官方页面。
+
+## 如何使用
+
+### 1. 从首页判断这个工具是否适合你
+
+首页会先告诉你当前收录了多少门核验课程、多少条学习路径、最近一次核验日期，以及做过哪些关键修正。  
+如果你是零基础或想系统补 CS，优先点击“选择我的学习路径”。
+
+<img src="docs/screenshots/readme-home-overview.jpg" alt="首页：选择路径和核验修正" width="820">
+
+### 2. 选择一条学习路径
+
+学习路径页不是按课程名堆列表，而是按学习目标组织：
+
+- **通用软件工程师路径**：从零基础到能写真实产品。
+- **AI / 机器学习方向**：理解模型背后的数学与代码，而不是只会调用 API。
+- **Web 全栈 / 创业方向**：最快做出可用产品的路线。
+- **系统底层 / 基础设施方向**：补机器组织、操作系统、网络和高级算法。
+
+<img src="docs/screenshots/readme-path-list.jpg" alt="学习路径列表" width="820">
+
+### 3. 进入路径详情，按阶段学习
+
+路径详情页会把课程拆成阶段。例如 AI / 机器学习方向会先从 CS50x / CS50P 开始，再补数学、概率、离散数学、算法，最后进入 CS50 AI 和机器学习。  
+这样学习的好处是：你不会一上来就被高阶课程劝退，也不会只学工具而跳过基础。
+
+<img src="docs/screenshots/readme-ai-path.jpg" alt="AI / 机器学习路径详情" width="820">
+
+### 4. 点进课程详情，跳转到 Harvard 官方教学页面
+
+每门课都可以继续点进课程详情页。你会看到：
+
+- **课程事实**：年份 / 学期、前置要求、费用、证书规则。
+- **学习资源**：官方课程页、证书规则页、edX 报名页或 Harvard 课程目录。
+- **核验来源**：用于确认课程编号、课程名称和开课信息。
+
+例如数学基础里的 Math 21A，会跳到 Harvard Department of Mathematics 的课程页面，而不是跳到来路不明的转载页面。
+
+<img src="docs/screenshots/readme-harvard-math21a.jpg" alt="Harvard Mathematics 21A 官方课程页面" width="820">
+
+## 可以跳转到哪些官方资源
+
+当前课程库里保留了多类官方入口，例如：
+
+- [CS50x](https://cs50.harvard.edu/x/)：Harvard CS50 计算机科学导论。
+- [CS50 Python](https://cs50.harvard.edu/python/)：Python 编程入门。
+- [CS50 AI](https://cs50.harvard.edu/ai/)：Python 人工智能导论。
+- [CS50 Web](https://cs50.harvard.edu/web/)：Web 编程课程。
+- [Harvard CS Advising](https://csadvising.seas.harvard.edu/)：Harvard CS 培养方案、课程标签和要求。
+- [Harvard Math 21A](https://www.math.harvard.edu/course/mathematics-21a-spring/)：多元微积分课程页面。
+- [my.harvard Course Catalog](https://beta.my.harvard.edu/)：课程开设学期、学分和描述。
 
 ## 本地运行
 
@@ -19,74 +99,6 @@ npm run check
 npm run screenshots
 ```
 
-## 页面导览
-
-### 1. 首页
-
-<img src="docs/screenshots/home.png" alt="首页" width="720">
-
-从首页开始看。这里会先说明这个项目的边界：基于 Harvard CS 培养方案、CS50 OpenCourseWare 和公开课程目录整理，并显示课程数量、学习路径数量、最近核验日期和关键修正数量。第一次访问时，建议直接点“选择我的学习路径”。
-
-### 2. 学习路径
-
-<img src="docs/screenshots/paths.png" alt="学习路径" width="720">
-
-这一页按目标选择路线，而不是让你先面对完整课程库。适合先决定自己当前最需要的是通用 CS 基础、AI 方向、Web 工程，还是系统 / 算法强化。
-
-### 3. 路径详情
-
-<img src="docs/screenshots/path-general.png" alt="通用 CS 基础路径" width="720">
-
-路径详情页会把课程拆成阶段，并给出建议学习顺序。每门课都可以继续点进课程详情页，查看入口、年份、证书和费用说明。
-
-<img src="docs/screenshots/path-ai.png" alt="AI 路径" width="720">
-
-AI 路径强调先补 Python、数学和 CS 基础，再进入 CS50 AI、机器学习和项目练习。
-
-<img src="docs/screenshots/path-web.png" alt="Web 路径" width="720">
-
-Web 路径适合希望做可交付作品的人，先完成编程基础，再进入 Web、数据库和项目实践。
-
-<img src="docs/screenshots/path-systems.png" alt="系统路径" width="720">
-
-系统路径用于补计算机底层能力，重点看数据结构、算法、操作系统、网络和系统类课程。
-
-### 4. 课程库
-
-<img src="docs/screenshots/courses.png" alt="课程库" width="720">
-
-课程库适合横向查找。可以按入门、数学、核心、进阶筛选；每张卡片都会显示课程编号、工作量、语言、核验状态和当前年份 / 学期描述。
-
-### 5. 课程详情
-
-<img src="docs/screenshots/course-cs50ai.png" alt="课程详情" width="720">
-
-课程详情页是这个工具最重要的页面。先看“课程事实”，确认前置要求、费用、证书和年份；再看“学习资源”打开官方入口、证书说明或 edX 页面；最后看“核验来源”，用于追溯信息出处。页面里的学习资源会在当前标签页打开，适合在移动端或微信内浏览器里使用。
-
-### 6. 学习方法
-
-<img src="docs/screenshots/method.png" alt="学习方法" width="720">
-
-这一页说明怎么把公开课真正学完：先写代码、再看讲解、保留作业记录，用 AI 做反馈和复盘，而不是让 AI 替自己完成学习。
-
-### 7. 社区资源
-
-<img src="docs/screenshots/community.png" alt="社区资源" width="720">
-
-这里集中放官方入口和高信噪比社区。遇到课程链接漂移时，优先回到官方入口和核验来源，而不是依赖二次搬运链接。
-
-### 8. 核验记录
-
-<img src="docs/screenshots/verification.png" alt="核验记录" width="720">
-
-这一页记录从原型推进到可信工具时做过的关键修正，比如课程编号、课程名称、证书描述和费用边界。后续每次更新课程数据，都应同步更新这里或 `docs/verification.md`。
-
-### 9. 常见问题
-
-<img src="docs/screenshots/faq.png" alt="常见问题" width="720">
-
-FAQ 用来解释常见误解：这个项目不是 Harvard 官方学位计划，证书规则以 CS50 / edX 当前页面为准，学习路径是面向自学目标的重排。
-
 ## 工程结构
 
 - `index.html`：静态入口。
@@ -100,10 +112,15 @@ FAQ 用来解释常见误解：这个项目不是 Harvard 官方学位计划，�
 
 ## 维护规则
 
-新增或修改课程时，先改 `src/data.js`，每门课至少保留一个官方来源 URL。然后依次运行：
+新增或修改课程时，先改 `src/data.js`，每门课至少保留一个官方来源 URL。然后运行：
 
 ```bash
 npm run check
+```
+
+如果改动影响页面展示，再运行：
+
+```bash
 npm run screenshots
 ```
 
