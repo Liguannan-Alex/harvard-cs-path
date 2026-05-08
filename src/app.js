@@ -286,7 +286,7 @@ function fact(label, value) {
 
 function resourceLink(resource) {
   return `
-    <a class="resource-card" href="${escapeHtml(resource.url)}" target="_blank" rel="noreferrer">
+    <a class="resource-card" href="${escapeHtml(resource.url)}" rel="noreferrer">
       <span>${escapeHtml(resource.type)}</span>
       <strong>${escapeHtml(resource.label)}</strong>
     </a>
