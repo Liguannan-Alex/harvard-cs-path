@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 时代，我把哈佛 CS 搬回家了 · 皮冠南</title>
+<meta name="description" content="一个停更公众号一个月的人，今天为什么决定写一篇。17 门课，4 条学习路径。">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #fafafa;
+  --bg-alt: #ffffff;
+  --bg-dark: #0f0f0f;
+  --ink: #1a1a1a;
+  --ink-2: #444;
+  --ink-3: #888;
+  --line: #e5e5e5;
+  --accent: #1a1a1a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-size: 16px;
+}
+
+.section {
+  padding: 100px 24px;
+  position: relative;
+}
+
+.section.hero-section,
+.section.cta-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.subtitle-tag {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 32px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* HERO */
+h1.hero {
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin-bottom: 32px;
+}
+
+h1.hero .line {
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: rise 0.8s ease forwards;
+}
+h1.hero .line:nth-child(1) { animation-delay: 0.1s; }
+h1.hero .line:nth-child(2) { animation-delay: 0.5s; }
+h1.hero .line:nth-child(3) { animation-delay: 0.9s; }
+
+@keyframes rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-meta {
+  font-size: 14px;
+  color: var(--ink-3);
+  opacity: 0;
+  animation: rise 0.8s ease 1.4s forwards;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--ink-3);
+  font-family: "SF Mono", Menlo, monospace;
+  opacity: 0;
+  animation: pulse 2s ease 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.8; transform: translateX(-50%) translateY(6px); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TYPOGRAPHY */
+h2 {
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 600;
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+  line-height: 1.4;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 24px 0 12px;
+  color: var(--ink);
+}
+
+p {
+  margin-bottom: 18px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+p.lead {
+  font-size: 17px;
+  color: var(--ink-2);
+}
+
+p.muted { color: var(--ink-3); }
+
+p.big {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 500;
+  margin: 40px 0;
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+}
+
+p.big strong {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 2px;
+  font-weight: 600;
+}
+
+p.q {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 32px 0 16px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 48px auto;
+  max-width: 80px;
+}
+
+.divider-full {
+  height: 1px;
+  background: var(--line);
+  margin: 60px 0;
+}
+
+/* Bullet flow with arrows */
+.flow-list {
+  list-style: none;
+  margin: 24px 0 32px;
+  padding-left: 0;
+}
+
+.flow-list li {
+  font-size: 16px;
+  color: var(--ink-2);
+  padding: 6px 0 6px 28px;
+  position: relative;
+}
+
+.flow-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--ink-3);
+  font-family: "SF Mono", Menlo, monospace;
+}
+
+/* Inline emphasis */
+strong { font-weight: 600; }
+em { font-style: normal; background: rgba(0,0,0,0.05); padding: 2px 6px; }
+
+.code-link {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 8px 14px;
+  display: inline-block;
+  user-select: all;
+  text-decoration: none;
+  margin: 12px 0;
+}
+
+.code-link:hover { background: #333; }
+
+/* Path selector - INTERACTIVE */
+.path-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+@media (max-width: 640px) {
+  .path-grid { grid-template-columns: 1fr; }
+}
+
+.path-card {
+  border: 1px solid var(--line);
+  background: var(--bg-alt);
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.path-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--ink);
+  transition: width 0.4s ease;
+}
+
+.path-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.path-card:hover::before { width: 100%; }
+
+.path-card.selected {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.path-card.selected::before { width: 100%; background: var(--bg); }
+.path-card.selected .path-meta,
+.path-card.selected .path-num { color: rgba(255,255,255,0.6); }
+.path-card.selected .path-tagline { color: rgba(255,255,255,0.85); }
+
+.path-num {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.path-title {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.path-meta {
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+  font-family: "SF Mono", Menlo, monospace;
+}
+
+.path-tagline {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+.detail-panel {
+  margin-top: 32px;
+  padding: 0 28px;
+  background: var(--bg-alt);
+  border-left: 3px solid var(--ink);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.5s ease, padding 0.4s ease;
+}
+
+.detail-panel.show {
+  opacity: 1;
+  max-height: 800px;
+  padding: 32px 28px;
+}
+
+.detail-title {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-family: "SF Mono", Menlo, monospace;
+}
+
+.detail-name {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.course-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.course-pill {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: pillIn 0.4s ease forwards;
+}
+
+.arrow {
+  color: var(--ink-3);
+  opacity: 0;
+  animation: pillIn 0.4s ease forwards;
+}
+
+@keyframes pillIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-desc {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.8;
+}
+
+/* Course meta legend */
+.course-legend {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.course-legend .label {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+/* CTA section */
+.cta-section {
+  background: var(--bg-dark);
+  color: var(--bg);
+}
+
+.cta-section .subtitle-tag { color: #555; }
+.cta-section h2,
+.cta-section h1 { color: white; }
+.cta-section p { color: #aaa; }
+
+.cta-section h1 {
+  font-size: clamp(48px, 9vw, 88px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  margin: 32px 0;
+}
+
+.cta-section .flow-list li {
+  color: #aaa;
+}
+
+.cta-section .flow-list li::before { color: #666; }
+
+.cta-link {
+  display: inline-block;
+  margin-top: 24px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 14px 20px;
+  color: white;
+  text-decoration: none;
+  user-select: all;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.cta-link:hover {
+  background: white;
+  color: var(--bg-dark);
+}
+
+.foot-quote {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 15px;
+  color: #888;
+  line-height: 1.85;
+}
+
+.signature {
+  margin-top: 32px;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+  font-family: "SF Mono", Menlo, monospace;
+}
+
+/* Hero background grid */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-section .container { position: relative; z-index: 1; }
+
+/* Reading progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--ink);
+  z-index: 1000;
+  transition: width 0.1s ease;
+  width: 0;
+}
+
+.kbd-hint {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  color: var(--ink-3);
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  z-index: 100;
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) { .kbd-hint { display: none; } }
+
+/* Section transitions */
+.section.alt { background: var(--bg-alt); }
+
+@media (max-width: 640px) {
+  .section { padding: 70px 20px; }
+  body { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- HERO -->
+<section class="section hero-section">
+  <div class="container">
+    <p class="subtitle-tag">A MAP FOR LEARNING IN THE AGE OF AI</p>
+    <h1 class="hero">
+      <span class="line">AI 时代，</span>
+      <span class="line">我把哈佛 CS</span>
+      <span class="line">搬回家了。</span>
+    </h1>
+    <p class="hero-meta">— 一个停更公众号一个月的人，今天为什么决定写一篇</p>
+  </div>
+  <div class="scroll-hint">SCROLL ↓</div>
+</section>
+
+<!-- 1. PROLOGUE -->
+<section class="section">
+  <div class="container fade-in">
+    <p class="subtitle-tag">01 · PROLOGUE</p>
+
+    <p class="lead">公众号停更了一个月。</p>
+    <p class="lead">这一个月不是没东西可写。恰恰相反——做的事情比写的时候多多了。</p>
+    <p>手上的几个项目继续推进，每天都在赶；陆陆续续帮了一些朋友——AI 上手的疑惑、用起来卡住的地方，一个个聊下来都解掉了；自己的"个人操作系统" lgnpos 从想法做到 Phase 4 全部跑通；自画像迭代到了新版本；八字命盘深度学了一遍；十二字方法论又走到了 19 字。</p>
+    <p>但这些东西，一个字也没写在公众号上。</p>
+
+    <p class="q">为什么呢？</p>
+    <p class="muted">这件事我想了很久。</p>
+  </div>
+</section>
+
+<!-- 2. DRIFT -->
+<section class="section alt">
+  <div class="container fade-in">
+    <p class="subtitle-tag">02 · DRIFT</p>
+
+    <p>怎么说呢，不是不喜欢公众号本身。是越来越不喜欢"公众号"这种形式。</p>
+    <p>公众号是广播。一对多，单向。写完一篇 2000 字发出去，反馈很慢，迭代成本很高。</p>
+    <p class="lead">但我这一年的输出方式，变了。</p>
+    <p>现在花最多时间的，是和 AI 对话——每天大几小时，和 Claude、ChatGPT、Gemini 来回聊。把脑子里一个模糊的想法，丢给 AI，让它顶回来一些反例和延伸，我再修，它再顶，反反复复。</p>
+    <p>一个月前我还在用十二字方法论，前两周已经迭代到 19 字了。这个迭代不是我一个人坐着想出来的，是和 AI 对话出来的。</p>
+
+    <p class="lead" style="margin-top: 32px;">这种状态我给它起了个名字，叫 <strong>"对话式自举"</strong>——</p>
+
+    <ul class="flow-list">
+      <li>我学一个东西</li>
+      <li>写一段心得</li>
+      <li>把心得丢给 AI</li>
+      <li>AI 指出我没看见的盲区</li>
+      <li>我再修，再深挖一层</li>
+      <li>直到形成一个稳定的认知</li>
+    </ul>
+
+    <div class="divider-full"></div>
+
+    <p class="q">这个过程产生的东西，沉淀在哪儿？</p>
+    <p>沉淀在 Obsidian 笔记里——我搭了一个叫 <em>LLM Wiki</em> 的小系统，每天的对话和发现都按"来源/概念/综合"分类入库。</p>
+    <p>沉淀在代码里——<em>lgnpos</em> 是我自己的个人操作系统，精力、燃料、任务、想法都进 YAML。</p>
+    <p>沉淀在和别人的对话里——朋友圈一句话、群里一段对答、面对面突然冒出来的一个洞见。</p>
+
+    <p class="big">这些东西都不适合做成公众号。<br>因为它们是<strong>流动的</strong>。</p>
+
+    <p>一篇 2000 字的文章，需要把流动的东西冻住。但冻住的那一刻，它就过时了。</p>
+    <p class="lead">所以这一个月，我没写公众号。但每天都在输出。</p>
+  </div>
+</section>
+
+<!-- 3. WHY TODAY -->
+<section class="section">
+  <div class="container fade-in">
+    <p class="subtitle-tag">03 · WHY TODAY</p>
+
+    <p class="lead">但今天我决定写一篇。</p>
+    <p>因为这一个月里我做了一件事，它本身就是一个工具，可以共享，可以放出去让别人用。</p>
+
+    <p class="big"><strong>把哈佛大学 CS 学院的整个课程体系，搬回家了。</strong></p>
+
+    <p>17 门课，4 条学习路径，全部捋清楚了。项目放在我的 GitHub 上，叫 <em>harvard-cs-path</em>。</p>
+    <p class="muted">这件事得讲清楚。但讲它之前，我想多说一句"AI 时代怎么学习"——因为这个项目的来源，就是这个问题。</p>
+  </div>
+</section>
+
+<!-- 4. THE INSIGHT -->
+<section class="section alt">
+  <div class="container fade-in">
+    <p class="subtitle-tag">04 · AI ERA LEARNING</p>
+
+    <p>这一年我接触的人里，越来越多的人在学 AI。</p>
+    <p>学提示词、学 Cursor、学 Claude、学 Agent、学怎么搭工作流。</p>
+    <p>但我观察下来，<strong>真正学进去的人很少</strong>。</p>
+    <p>不是大家不努力。是这个学习范式有一个根本的问题——</p>
+
+    <p class="big"><strong>AI 工具会变，<br>但你和 AI 对话的"对象"不会变。</strong></p>
+
+    <p>你想想看。</p>
+    <p>你打开 Claude，对它说"教我学计算机"。它会给你一个回答。但这个回答的质量取决于你提问时脑子里有没有结构。</p>
+    <p>如果你脑子里没结构，AI 给你的就是漂亮但散的内容——你看完觉得很有道理，但合上窗口什么也没沉淀下来。</p>
+    <p>如果你脑子里有结构——比如你正在学 CS50 的第三周，知道自己要补"指针和内存"——那 AI 就能精准帮你。它能给你画图、举反例、出习题、检查你的理解。</p>
+
+    <p class="lead" style="margin-top: 32px;">区别不在 AI，在你给 AI 的"对象"。</p>
+
+    <p>一个好的对象必须满足两个条件：</p>
+    <ul class="flow-list">
+      <li>它有内在结构（不是一个空洞的话题）</li>
+      <li>它经过长期验证（不是某个博主的一时之言）</li>
+    </ul>
+
+    <p class="big" style="margin-top: 40px;">这就是为什么我后来认定：<br>AI 时代要学计算机，最好的"对象"，<br>是<strong>世界顶级学府的课程体系</strong>。</p>
+
+    <p class="muted">不是因为名校光环。是因为它结构最严、验证最久、覆盖最全。</p>
+  </div>
+</section>
+
+<!-- 5. WHY HARVARD -->
+<section class="section">
+  <div class="container fade-in">
+    <p class="subtitle-tag">05 · WHY HARVARD</p>
+
+    <p class="q">那为什么是哈佛？</p>
+    <p>MIT、Stanford 也都行。我选哈佛，是因为它有一个特别好的入口——<strong>CS50</strong>。</p>
+    <p>CS50 是全世界最知名的计算机入门课，没有之一。它解决了"零基础该从哪里开始"这个最难的问题。</p>
+    <p>但 CS50 之外呢？哈佛 CS 还有什么课？哪些公开？哪些只有学位生才能上？哪些有免费证书？哪些要花钱？</p>
+    <p>我自己是搜过的。每个问题都要单独搜半天，搜到的资源还都是散的。今天看一个视频，明天加一个收藏，过两个月浏览器收藏夹里多了 200 个链接，但还是不知道该从哪门开始。</p>
+
+    <p class="big">那段时间我想，这不是"缺资源"，是 <strong>缺地图</strong>。</p>
+
+    <p>资源已经在那里了。哈佛已经把能公开的部分公开了。但是没有人按照"中文世界的普通人怎么学"这个角度，把它捋成一条顺序。</p>
+    <p class="lead">那我就自己捋一下吧。</p>
+  </div>
+</section>
+
+<!-- 6. INTERACTIVE PATHS -->
+<section class="section alt">
+  <div class="container fade-in">
+    <p class="subtitle-tag">06 · YOUR PATH</p>
+    <h2>捋出来的东西，长这样</h2>
+
+    <p class="lead">4 条学习路径。点击或按键盘 1/2/3/4 选择，看完整课程依赖。</p>
+
+    <div class="path-grid">
+      <div class="path-card" data-path="0">
+        <div class="path-num">PATH 01</div>
+        <div class="path-title">通用软件工程</div>
+        <div class="path-meta">12–18 个月 · 全面而扎实</div>
+        <div class="path-tagline">从入门到能独立造系统的标准路径。CS50 → Python → 离散数学 → 设计 → 系统 → Web → 数据库。</div>
+      </div>
+
+      <div class="path-card" data-path="1">
+        <div class="path-num">PATH 02</div>
+        <div class="path-title">AI / 机器学习</div>
+        <div class="path-meta">15–24 个月 · 难度最高</div>
+        <div class="path-tagline">这条最难。先把 STAT110（概率）、CS20、MATH21（线代）补上，再进机器学习理论和应用 AI。</div>
+      </div>
+
+      <div class="path-card" data-path="2">
+        <div class="path-num">PATH 03</div>
+        <div class="path-title">全栈创业速通</div>
+        <div class="path-meta">8–12 个月 · 最快出产品</div>
+        <div class="path-tagline">最快的一条。CS50x 之后直接跳 CS50W、CS50SQL、CS50AI。不碰理论，目标就是能做出产品。</div>
+      </div>
+
+      <div class="path-card" data-path="3">
+        <div class="path-num">PATH 04</div>
+        <div class="path-title">系统与基础设施</div>
+        <div class="path-meta">18–24 个月 · 工程师硬功夫</div>
+        <div class="path-tagline">从 CS61 开始啃，然后操作系统、网络、高级算法。给想练真功夫的人。</div>
+      </div>
+    </div>
+
+    <div class="detail-panel" id="detail">
+      <div class="detail-title">COURSE CHAIN</div>
+      <div class="detail-name" id="detailName"></div>
+      <div class="course-chain" id="courseChain"></div>
+      <div class="detail-desc" id="detailDesc"></div>
+    </div>
+
+    <div class="course-legend">
+      <div class="label">每一门课都标了 ↓</div>
+      <p style="margin-bottom: 8px;">→ 是 MOOC 公开还是只有哈佛校内能上</p>
+      <p style="margin-bottom: 8px;">→ 有没有免费证书</p>
+      <p style="margin-bottom: 8px;">→ 哪些是付费的 edX verified certificate</p>
+      <p style="margin-bottom: 0;">→ 学起来大概多久</p>
+    </div>
+
+    <p style="margin-top: 32px;">为什么这些细节要标？</p>
+    <p>因为顶级资源最大的价值，不是"看起来高级"，而是它有一套被验证过的知识结构。但这个结构如果不把边界标清楚，普通人很容易被噪声淹掉——以为 CS50 就是哈佛 CS 的全部，或者以为所有课都能免费拿证书。</p>
+    <p class="lead">不是这样的。地图就是地图，要把哪里能去、哪里要花钱、哪里免费，一条条标出来。</p>
+  </div>
+</section>
+
+<!-- 7. THE TOOL -->
+<section class="section">
+  <div class="container fade-in">
+    <p class="subtitle-tag">07 · THE TOOL</p>
+
+    <p>项目本身是个很小的东西。一个 HTML 文件，一个 JavaScript 文件，没有部署网站。</p>
+    <p class="q">为什么不部署网站？</p>
+    <p>因为我自己学的时候发现，最缺的不是"又一个网站"。是一份打开就能用、可以脱离网络、可以放在自己电脑上的资料。</p>
+    <p class="lead">GitHub 上 clone 下来就能用。</p>
+
+    <a href="https://github.com/Liguannan-Alex/harvard-cs-path" class="code-link" target="_blank">github.com/Liguannan-Alex/harvard-cs-path</a>
+  </div>
+</section>
+
+<!-- 8. REFLECTION -->
+<section class="section alt">
+  <div class="container fade-in">
+    <p class="subtitle-tag">08 · REFLECTION</p>
+
+    <p>回到最开始那个问题——为什么停更一个月，今天又写了一篇？</p>
+
+    <p class="big">因为这件事不是流动的，<br>是已经 <strong>凝固</strong> 成工具的东西。</p>
+
+    <p>流动的想法适合留在对话里、笔记里、代码里。但当流动的东西凝固成一个可以共享的工具，它就值得"广播"一次。</p>
+    <p class="lead">这就是公众号还有用的地方——它适合发出"凝固的工具"。</p>
+  </div>
+</section>
+
+<!-- 9. CTA - DARK -->
+<section class="section cta-section">
+  <div class="container fade-in">
+    <p class="subtitle-tag">09 · TAKE THE MAP</p>
+
+    <p>如果你也是这样的状态——</p>
+    <ul class="flow-list">
+      <li>学了一堆 AI 工具，越学越觉得自己缺底座</li>
+      <li>想系统学计算机，但不知道从哪门课开始</li>
+      <li>想给孩子（或者给自己）找一份不带焦虑的、严肃的学习资源</li>
+      <li>不想再东一榔头西一棒子地收藏链接</li>
+    </ul>
+    <p>那就 clone 下来看看。</p>
+    <p>不需要一次学完。也不需要把自己想象成天才。</p>
+    <p>只要从第一门课开始。然后——记住——<strong style="color: white;">和 AI 一起学</strong>。它是你的助教，是你的反问者，是你盲区的指出者。</p>
+    <p>但前提是，你给它一个有结构的对象。</p>
+
+    <h1>把哈佛 CS<br>搬回家。</h1>
+
+    <a href="https://github.com/Liguannan-Alex/harvard-cs-path" class="cta-link" target="_blank">github.com/Liguannan-Alex/harvard-cs-path</a>
+
+    <div class="foot-quote">
+      AI 时代，普通人最值得做的事，<br>
+      可能不是追每一个新工具。<br>
+      是借着 AI 的力气，把世界顶级学府已经公开的知识，<br>
+      真正搬进自己脑子里。<br><br>
+      —— 至少这是我这一个月，又凝固出的一个东西。
+    </div>
+
+    <p class="signature">皮冠南 · 2026.05.08</p>
+  </div>
+</section>
+
+<div class="kbd-hint">键盘: 1/2/3/4 选路径 · G 跳 GitHub</div>
+
+<script>
+const paths = [
+  {
+    name: '通用软件工程',
+    courses: ['CS50x', 'CS50P', 'CS20', 'CS51', 'CS61', 'CS50W', 'CS50SQL'],
+    desc: '入门→编程→数学基础→设计与抽象→系统→Web→数据库。一个人从零基础到能独立工程化交付的标准训练顺序。'
+  },
+  {
+    name: 'AI / 机器学习',
+    courses: ['CS50x', 'STAT110', 'CS20', 'MATH21', 'CS1810', 'CS50AI'],
+    desc: '这条路最难——必须先把概率、离散、线代打扎实，否则后面的机器学习只能停在调包阶段。但走通了，就是 AI 时代最有杠杆的路径。'
+  },
+  {
+    name: '全栈创业速通',
+    courses: ['CS50x', 'CS50W', 'CS50SQL', 'CS50AI'],
+    desc: '为想最快做出可用产品的人设计。跳过理论和系统底层，专攻 Web、数据库、AI 集成。8-12 个月就能动手做 SaaS 或独立项目。'
+  },
+  {
+    name: '系统与基础设施',
+    courses: ['CS50x', 'CS61', 'CS1610', 'CS1430', 'CS1240', 'CS2241'],
+    desc: '工程师的硬功夫。从底层系统编程开始，到操作系统、网络、高级算法。这条最长最苦，但走完是真功夫——AI 替代不了的那种。'
+  }
+];
+
+const cards = document.querySelectorAll('.path-card');
+const detail = document.getElementById('detail');
+const detailName = document.getElementById('detailName');
+const courseChain = document.getElementById('courseChain');
+const detailDesc = document.getElementById('detailDesc');
+
+function selectPath(i) {
+  cards.forEach((c, idx) => c.classList.toggle('selected', idx === i));
+  const p = paths[i];
+  detailName.textContent = p.name;
+  detailDesc.textContent = p.desc;
+  courseChain.innerHTML = '';
+  p.courses.forEach((c, idx) => {
+    const pill = document.createElement('span');
+    pill.className = 'course-pill';
+    pill.textContent = c;
+    pill.style.animationDelay = (idx * 0.08) + 's';
+    courseChain.appendChild(pill);
+    if (idx < p.courses.length - 1) {
+      const arrow = document.createElement('span');
+      arrow.className = 'arrow';
+      arrow.textContent = '→';
+      arrow.style.animationDelay = (idx * 0.08 + 0.04) + 's';
+      courseChain.appendChild(arrow);
+    }
+  });
+  detail.classList.add('show');
+  setTimeout(() => detail.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
+}
+
+cards.forEach((card, i) => {
+  card.addEventListener('click', () => selectPath(i));
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key >= '1' && e.key <= '4') selectPath(parseInt(e.key) - 1);
+  if (e.key.toLowerCase() === 'g') window.open('https://github.com/Liguannan-Alex/harvard-cs-path', '_blank');
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  progress.style.width = scrolled + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>
